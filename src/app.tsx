@@ -2,6 +2,7 @@ import logo from './assets/Logo.svg'
 import { NewCard } from './components/new-note'
 import { NoteCard } from './components/note-card'
 
+
 function App() {
   return (
     <>
@@ -15,7 +16,7 @@ function App() {
         <div className='h-px bg-slate-700' />
         <div className='grid grid-cols-3 gap-6 auto-rows-[250px]'>
           <NewCard />
-          <NoteCard />
+          <NoteCard note={{ date: new Date(), content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum quas fuga sit impedit minima perferendis voluptas eveniet modi maiores aliquid quos voluptates consequatur, porro, nostrum rem. Quam exercitationem laudantium amet. ' }} />
         </div>
 
 
