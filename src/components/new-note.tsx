@@ -2,8 +2,10 @@ import * as Dialog from '@radix-ui/react-dialog'
 import { X } from 'lucide-react'
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { toast } from 'sonner'
-
-export function NewCard() {
+interface NewNoteCardProps {
+    onNoteCreated: (content: string) => void
+}
+export function NewCard({ onNoteCreated }: NewNoteCardProps) {
     const [shouldShowOnBoarding, setShouldShowOnBoarding] = useState(true)
     const [content, setContent] = useState('')
     function handleStartEditor() {
@@ -18,7 +20,11 @@ export function NewCard() {
     }
     function handleSaveNote(event: FormEvent) {
         event.preventDefault()
-        console.log(content)
+        // console.log(content)
+
+        onNoteCreated(content)
+        setContent('')
+        setShouldShowOnBoarding(true)
         toast.success('Nota criada!')
     }
     return (
@@ -52,6 +58,7 @@ export function NewCard() {
                                             autoFocus
                                             className='text-sm leading-6 text-slate-400 bg-transparent resize-none flex-1 outline-none'
                                             onChange={handleContentChanged}
+                                            value={content}
                                         />
                                     )
                                 }
