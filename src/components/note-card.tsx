@@ -12,11 +12,12 @@ interface NoteCardProps {
 export function NoteCard({ note }: NoteCardProps) {
     return (
         <Dialog.Root>
-            <Dialog.Trigger className='rounded-md text-left bg-slate-700 p-5 space-y-3 overflow-hidden relative hover:ring-2 hover:ring-slate-600 focus-visible:ring-lime-400 outline-none'>
+            <Dialog.Trigger className='rounded-md text-left bg-slate-700 p-5 flex flex-col gap3 overflow-hidden relative hover:ring-2 hover:ring-slate-600 focus-visible:ring-lime-400 outline-none'>
+                {/* update: space-y-3 to gap3 */}
 
-                <span className='text-sm font-medium text-slate-300'>{note.date.toISOString()}</span>
+                <span className='text-sm font-medium text-slate-300'>{formatDistanceToNow(note.date, { locale: ptBR, addSuffix: true })}</span>
                 <p className='leading-6 text-sm text-slate-400'>{note.content}</p>
-                <div className='absolute bottom-0 left-0 right-0 left-0 h-1/2 bg-gradient-to-t from-black/60 to-black/0 pointer-events-none' />
+                <div className='absolute bottom-0  right-0 left-0 h-1/2 bg-gradient-to-t from-black/60 to-black/0 pointer-events-none' />
             </Dialog.Trigger>
             <Dialog.Portal>
                 <Dialog.Overlay className='inset-0 fixed bg-black/50'>

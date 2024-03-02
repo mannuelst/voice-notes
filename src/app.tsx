@@ -1,9 +1,23 @@
+import { useState } from 'react'
 import logo from './assets/Logo.svg'
 import { NewCard } from './components/new-note'
 import { NoteCard } from './components/note-card'
 
 
 function App() {
+  const [notes, setNotes] = useState(
+    [
+      {
+        id: 1, date: new Date(), content: 'Hi note'
+      },
+      {
+        id: 2, date: new Date(), content: 'What is up?'
+      },
+      {
+        id: 3, date: new Date(), content: 'Heyy! whats popping?'
+      }
+    ]
+  )
   return (
     <>
       <div className='mx-auto max-w-6xl my-12 space-y-6 '>
@@ -16,6 +30,11 @@ function App() {
         <div className='h-px bg-slate-700' />
         <div className='grid grid-cols-3 gap-6 auto-rows-[250px]'>
           <NewCard />
+          {
+            notes.map(note => {
+              return <NoteCard note={note} />
+            })
+          }
           <NoteCard note={{ date: new Date(), content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.' }} />
         </div>
 
