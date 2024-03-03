@@ -10,7 +10,13 @@ interface Note {
 }
 
 function App() {
-  const [notes, setNotes] = useState<Note[]>([])
+  const [notes, setNotes] = useState<Note[]>(() => {
+    const noteOnStorage = localStorage.getItem('notes')
+    if (noteOnStorage) {
+      return JSON.parse(noteOnStorage)
+    }
+    return []
+  })
   function onNoteCreated(content: string) {
     const newNote = {
       id: crypto.randomUUID,
@@ -18,6 +24,7 @@ function App() {
       content,
     }
     setNotes([newNote, ...notes])
+    localStorage.setItem('notes', JSON.stringify([newNote, ...notes]))
   }
   return (
     <>
