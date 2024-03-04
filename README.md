@@ -5,7 +5,7 @@ Sure, here's a basic README for your GitHub project:
 # Voice Notes
 ![NLW](./src/assets/nlw.png)
 
-Voice Notes is an application for taking notes using voice, utilizing modern technologies such as React and TypeScript.
+[Voice Notes ](https://voice-notes-nlw.vercel.app/)is an application for taking notes using voice, utilizing modern technologies such as React and TypeScript.
 
 ## Installation
 
